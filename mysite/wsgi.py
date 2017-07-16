@@ -7,18 +7,30 @@ For more information on this file, see
 https://docs.djangoproject.com/en/1.11/howto/deployment/wsgi/
 """
 
+#import os
+
+#from django.core.wsgi import get_wsgi_application
+
+#from whitenoise.django import DjangoWhiteNoise
+
+
+#os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
+
+
+
+#application = get_wsgi_application()
+
+#application = DjangoWhiteNoise(application)
+
 import os
+import sys
+
+path = os.path.expanduser('~/My-Virtual-Blog')
+if path not in sys.path:
+    sys.path.append(path)
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'mysite.settings'
 
 from django.core.wsgi import get_wsgi_application
-
-from whitenoise.django import DjangoWhiteNoise
-
-
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
-
-
-
-application = get_wsgi_application()
-
-application = DjangoWhiteNoise(application)
-
+from django.contrib.staticfiles.handlers import StaticFilesHandler
+application = StaticFilesHandler(get_wsgi_application())
