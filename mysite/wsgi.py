@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.11/howto/deployment/wsgi/
 
 #from django.core.wsgi import get_wsgi_application
 
-#from whitenoise.django import DjangoWhiteNoise
+#
 
 
 #os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
@@ -20,7 +20,7 @@ https://docs.djangoproject.com/en/1.11/howto/deployment/wsgi/
 
 #application = get_wsgi_application()
 
-#application = DjangoWhiteNoise(application)
+#
 
 import os
 import sys
@@ -32,5 +32,7 @@ if path not in sys.path:
 os.environ['DJANGO_SETTINGS_MODULE'] = 'mysite.settings'
 
 from django.core.wsgi import get_wsgi_application
+from whitenoise.django import DjangoWhiteNoise
 from django.contrib.staticfiles.handlers import StaticFilesHandler
 application = StaticFilesHandler(get_wsgi_application())
+application = DjangoWhiteNoise(application)

@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import dj_database_url
+import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,8 +28,8 @@ SECRET_KEY = '%02i1s6n1(r-#to5%vqkpad!u+1fp)26vgky811=3ds$le@970'
 # SECURITY WARNING: don't run with debug turned on in production!
 #
 
-ALLOWED_HOSTS = ['*','127.0.0.1', 'knight9954.pythonanywhere.com']
-
+ALLOWED_HOSTS = ['*']
+#'127.0.0.1', 'knight9954.pythonanywhere.com'
 DEBUG = True
 
 
@@ -42,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog',
+    #'blog',
 ]
 
 MIDDLEWARE = [
@@ -83,14 +85,13 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES= {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'deg7hkjjqcfm0j',
-        'USER': 'arkwusdsryhzme',
-        'PASSWORD': '39eafa157ce678f9baa58aff1662462e46a2d87c5451a26640910a36e165657d',
-        'HOST': 'ec2-23-21-96-159.compute-1.amazonaws.com',
+        'NAME': 'd5a1seisoa913o',
+        'USER': 'ijxxzzlygpsngx',
+        'PASSWORD': '7b31cb6b8443fe69db98f7f20950c4803f439d8d61a804f09ce7a59820a41964',
+        'HOST': 'ec2-50-19-218-160.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
-
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
@@ -140,7 +141,7 @@ STATICFILES_DIRS = (
 # Update database configuration with $DATABASE_URL.
 
 db_from_env = dj_database_url.config(conn_max_age=500)
-
+DATABASES['default'].update(db_from_env)
 
 
 
